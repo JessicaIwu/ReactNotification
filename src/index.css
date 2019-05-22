@@ -11,14 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 .App {
   font-family: sans-serif;
   text-align: center;
 }
 
-.mr-3{
+.mr-3 {
   margin-right: 3rem
 }
-.width-50{
+
+.width-50 {
   width: 50%
 }
