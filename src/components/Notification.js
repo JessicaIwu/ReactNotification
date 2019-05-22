@@ -22,7 +22,7 @@ const Notification = ({ notification }) => {
   }
 
   return (
-    <div className={type ? className(type) : "alert alert-info"}>
+    <div id="width-50" className={type ? className(type) : "alert alert-info"}>
       <p>
         {message ? message : ""}
       </p>
