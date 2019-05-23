@@ -18,8 +18,6 @@ class App extends Component {
 
   render() {
     const { notification } = this.state;
-    // var notification = this.state.notification
-
     return (
       <div id="app">
         <Confirmation notification={notification} />

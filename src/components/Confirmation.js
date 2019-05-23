@@ -28,19 +28,13 @@ export default class Confirmation extends Component {
 
     return (
       <div className="box p-3 m-3" id="width-50">
-          {showControl ? (
-            <>
-              <Notification notification={notification} />
-
-              <div class="btn btn-primary mr-3" onClick={this.onClick}>
-                Sure
-              </div>
-              <div class="btn btn-danger" onClick={this.onClick}>
-                No Thanks
-              </div>
-            </>
-          ) : null}
-        </div>
+        {showControl ? (
+          <Notification {...notification}>
+            <div className="btn btn-primary mr-3" onClick={this.onClick}>Sure</div>
+            <div className="btn btn-danger" onClick={this.onClick}>No Thanks</div>
+          </Notification>
+        ) : null}
+      </div>
     )
   }
 }
