@@ -1,10 +1,7 @@
 import React from 'react'
 
-const Notification = ({ notification }) => {
-  const { message, type } = notification;
-
-  // const message = props.notification.message;
-  // const type = props.notification.type;
+const Notification = (props) => {
+  const { message, type, children } = props;
 
   const className = (type) => {
     switch (type) {
@@ -23,9 +20,8 @@ const Notification = ({ notification }) => {
 
   return (
     <div id="width-50" className={type ? className(type) : "alert alert-info"}>
-      <p>
-        {message ? message : ""}
-      </p>
+      <p>{message ? message : ""}</p>
+      {children}
     </div>
   )
 };
