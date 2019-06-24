@@ -1,41 +1,14 @@
-import React, { Component } from "react";
-// import Confirmation from "./Confirmation";
+import React from "react";
 
-class SingleQuestion extends Component {
-  state = {
-    notification: this.props.notification,
-    showControl: false,
-    disabled: false,
-    showAnswer: false
-  };
-
-  handleClick = () => {
-    this.setState({
-      showAnswer: true,
-      disabled: true
-      //   disabled: !this.state.disabled
-    });
-  };
-
-  render() {
-    const { question, answer } = this.props;
-    const { showAnswer } = this.state;
-
-    return (
-      <div>
-        {/* <Confirmation notification={notification} /> */}
-        <p>Question: {question}</p>
-        {this.props.showAnswer ? <p>Answer: {answer}</p> : null}
-        <button
-          className="btn btn-primary show-answer"
-          disabled={this.state.disabled}
-        >
-          {/* onClick={this.handleClick} */}
-          Show Answer
-        </button>
-      </div>
-    );
-  }
-}
-
-export default SingleQuestion;
+export default ({activeAnswer, question, showAnswer, componentKey, selectedKey, showControl}) => (
+	<div>
+		<p>Question: {question}</p>
+		{<p> {selectedKey === componentKey && showAnswer ? activeAnswer : null}</p>}
+		<button
+			className="btn btn-primary show-answer"
+			disabled={showAnswer}
+			onClick={() =>showControl(componentKey)}>
+			Show Answer
+		</button>
+	</div>
+)

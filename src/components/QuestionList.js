@@ -1,58 +1,41 @@
-import React, { Component } from "react";
-import SingleQuestion from "./SingleQuestion";
-// import QuestionContainer from './QuestionContainer';
-
-// class QuestionList extends Component{
-//     render(){
-
-//         const { questions } = this.props;
-//         console.log(questions)
-//         const QList = questions.map(question => {
-//             return(
-//                 <div>
-//                     <p>Question: {questions.question}</p>
-//                     <p>Answer: {questions.answer}</p>
-//                 </div>
-//             )
-//         });
-//        return(
-//            <div>
-//                {/* <QuestionContainer {...questions} />    */}
-//                {QList}
-//            </div>
-//        )
-//     }
-// }
+import React,{Component} from 'react';
+import SingleQuestion from './SingleQuestion';
 
 class QuestionList extends Component {
-  render() {
-    console.log(this.props);
-    const { questions, showAnswer } = this.props;
-    // const TheList = questions.map(question => {
-    //     return(
-    //         <div>
-    //             <p>Question: {question.question}</p>
-    //             <p>Answer: {question.answer}</p>
-    //         </div>
-    //     )
-    // });
+  constructor () {
+    super()
 
-    return (
-      <div>
-        {questions.map((question, i) => {
-          return (
-            <div key={i}>
-              <SingleQuestion
-                question={question.question}
-                answer={question.answer}
-                showAnswer={showAnswer}
-              />
-            </div>
-          );
-        })}
-      </div>
-    );
+    this.state = {
+      selectedKey: null,
+      currentAnswer: null
+    }
+
+    this.showControl = this.showControl.bind(this)
   }
+
+  showControl (selectedKey) {
+    this.props.handleShowControl()
+    this.setState({
+      selectedKey,
+      currentAnswer: this.props.questions[selectedKey].answer
+    })
+  }
+
+  render = () => (
+    this.props.questions.map((question, i) => (
+      <div key={i}>
+        <SingleQuestion
+          componentKey={i}
+          question={question.question}
+          answer={question.answer}
+          showAnswer={this.props.showAnswer}
+          showControl={this.showControl}
+          activeAnswer={this.state.currentAnswer}
+          selectedKey={this.state.selectedKey}
+        />
+      </div>
+    ))
+  )
 }
 
 export default QuestionList;
